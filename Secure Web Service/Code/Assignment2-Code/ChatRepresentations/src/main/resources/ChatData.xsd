@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://cs594.stevens.edu/chat/service/web/rest/data"
+	jaxb:version="2.0" elementFormDefault="qualified" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://cs594.stevens.edu/chat/service/web/rest/data"
+	xmlns:dap="http://cs594.stevens.edu/chat/service/web/rest/data/dap">
+
+	<annotation>
+		<appinfo>
+			<jaxb:globalBindings>
+				<jaxb:javaType name="java.util.Date" xmlType="dateTime"
+					parseMethod="edu.stevens.cs594.chat.service.representations.DateAdapter.parseDate"
+					printMethod="edu.stevens.cs594.chat.service.representations.DateAdapter.printDate" />
+			</jaxb:globalBindings>
+		</appinfo>
+	</annotation>
+
+	<complexType name="MessageType">
+		<annotation>
+			<appinfo>
+				<jaxb:class implClass="edu.stevens.cs594.chat.service.representations.MessageRepresentation" />
+			</appinfo>
+		</annotation>
+		<sequence>
+			<element name="sender" type="string"/>
+			<element name="text" type="string"/>
+			<element name="timestamp" type="dateTime"/>
+		</sequence>
+	</complexType>
+
+	<element name="message-rep" type="tns:MessageType" />
+
+	<complexType name="UserType">
+		<annotation>
+			<appinfo>
+				<jaxb:class implClass="edu.stevens.cs594.chat.service.representations.UserRepresentation" />
+			</appinfo>
+		</annotation>
+		<sequence>
+			<element name="username" type="string" />
+			<element name="name" type="string" />
+		</sequence>
+	</complexType>
+
+	<element name="user-rep" type="tns:UserType"/>
+	
+</schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>ChatRestWebService</display-name>
+	<login-config>
+		<auth-method>CLIENT-CERT</auth-method>
+		<realm-name>ChatCerts</realm-name>
+	</login-config>
+	<security-constraint>
+		 <display-name>ChatConstraint</display-name>
+		 <web-resource-collection>
+		 	<web-resource-name>chat</web-resource-name>
+		 	<url-pattern>/resources/form/*</url-pattern>
+		 </web-resource-collection>
+		  <auth-constraint>       
+		  	<description/>       
+		  	<role-name>chatclient</role-name>    
+		  </auth-constraint>
+		 <user-data-constraint>
+		 	<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		 </user-data-constraint>
+	</security-constraint>
+</web-app>
+
+
